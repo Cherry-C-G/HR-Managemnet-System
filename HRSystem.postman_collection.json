@@ -1,0 +1,669 @@
+{
+	"info": {
+		"_postman_id": "207dfea4-008e-466c-a39e-3800ecc5e8df",
+		"name": "HRSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25382712"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HRAdmin\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestConnection",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HRAdmin\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/WeatherForecast",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"WeatherForecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hire Token",
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"strictSSL": false,
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HRAdmin\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5401/api/Hire?email=test@test.com",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"api",
+						"Hire"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "test@test.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee Login",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"employee\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStatus",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQZXJzb25JZCI6IjEwNTMiLCJyb2xlIjoiRW1wbG95ZWUiLCJuYmYiOjE2NzU5Nzg1NjUsImV4cCI6MTY3NjU4MzM2NSwiaWF0IjoxNjc1OTc4NTY1fQ.f6crv4BNQUja-RJPOMYCu5qufXC4qJ4WJuX538UqzdY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HRAdmin\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5401/api/GetStatus",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"api",
+						"GetStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Name sec Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{port}}/api/PersonalInformation/name/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"name",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Address sec Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{port}}/api/PersonalInformation/address/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"address",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact sec Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{port}}/api/PersonalInformation/contact/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"contact",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Emergency sec Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{port}}/api/PersonalInformation/emergencycontact/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"emergencycontact",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employment sec Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{port}}/api/PersonalInformation/employment/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"employment",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Name Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"person\": {\n        \"id\": 3,\n        \"firstname\": \"Cool-first\",\n        \"lastname\": \"Cool-last\",\n        \"middlename\": null,\n        \"email\": \"a@gmail.com\",\n        \"cellPhone\": \"123456\",\n        \"alternatePhone\": null,\n        \"gender\": \"Female\",\n        \"ssn\": \"123456789\",\n        \"dob\": \"1999-02-06T00:04:04.717\",\n        \"preferredName\": null,\n        \"workEmail\": null\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/PersonalInformation/name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Address Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"addresses\": [\n        {\n            \"id\": 1,\n            \"addressLine1\": \"225 W 35th St A\",\n            \"addressLine2\": null,\n            \"city\": \"New York City\",\n            \"zipcode\": \"10001\",\n            \"stateName\": \"New York\",\n            \"stateAbbr\": \"NY\",\n            \"personId\": 3,\n            \"isSecondary\": false\n        },\n        {\n            \"id\": 2,\n            \"addressLine1\": \"Update 5th Ave\",\n            \"addressLine2\": null,\n            \"city\": \"New York\",\n            \"zipcode\": \"10001\",\n            \"stateName\": \"New York\",\n            \"stateAbbr\": \"NY\",\n            \"personId\": 3,\n            \"isSecondary\": true\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/PersonalInformation/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contact Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"firstname\": \"Yi\",\n    \"lastname\": \"l1\",\n    \"middlename\": null,\n    \"email\": \"abc@gmail.com\",\n    \"cellPhone\": \"123456\",\n    \"alternatePhone\": null,\n    \"gender\": \"Female\",\n    \"ssn\": \"123456789\",\n    \"dob\": \"1999-02-06T00:04:04.717\",\n    \"preferredName\": null,\n    \"workEmail\": \"bc@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/PersonalInformation/contact",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Emergency Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"emergencyContacts\": [\n        {\n            \"person\": {\n                \"id\": 3,\n                \"firstname\": \"Yi\",\n                \"lastname\": \"Updated\",\n                \"middlename\": null,\n                \"email\": \"a@gmail.com\",\n                \"cellPhone\": \"123456\",\n                \"alternatePhone\": null,\n                \"gender\": \"Female\",\n                \"ssn\": \"123456789\",\n                \"dob\": \"1999-02-06T00:04:04.717\",\n                \"preferredName\": null,\n                \"workEmail\": \"bc@gmail.com\"\n            },\n            \"address\": {\n                \"id\": 1,\n                \"addressLine1\": \"Updated 225 W 35th St A\",\n                \"addressLine2\": null,\n                \"city\": \"New York City\",\n                \"zipcode\": \"10001\",\n                \"stateName\": \"New York\",\n                \"stateAbbr\": \"NY\",\n                \"personId\": 3,\n                \"isSecondary\": false\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{port}}/api/PersonalInformation/emergencycontact",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"PersonalInformation",
+						"emergencycontact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewHouse Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5401/houseDetail",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"houseDetail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addReport Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"title\": \"Door\",\n  \"description\": \"Not good\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5401/addReport",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"addReport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewHistoryReport Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5401/viewHistoryReport",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"viewHistoryReport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addComment Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"reportID\": 1,\n  \"employeeID\": 3,\n  \"comments\": \"need more help\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5401/addComment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"addComment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editComment Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5401/editComment/10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"editComment",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editComment Copy",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 10,\n  \"comments\": \"need more help!!!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5401/editComment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"editComment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[HR]addHouse Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 0,\n        \"ContactID\": 14,\n        \"Address\": \"55 Hill Rd\",\n        \"NumberOfPerson\": 5\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5401/addHouse",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"addHouse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[HR]deleteHouse Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5401/deleteHouse/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"deleteHouse",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[HR]viewHouse Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5401/houseDetailHR",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5401",
+					"path": [
+						"houseDetailHR"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQZXJzb25JZCI6Ijk5OSIsInJvbGUiOiJIUiIsIm5iZiI6MTY3NTgyNTExNSwiZXhwIjoxNjc2NDI5OTE1LCJpYXQiOjE2NzU4MjUxMTV9.E9zyH7TDVIEpKGWz2eH_QEpTJQ-Iib7YT7pCm_JJ7H8",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

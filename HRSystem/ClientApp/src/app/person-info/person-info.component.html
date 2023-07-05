@@ -1,0 +1,38 @@
+<h1>Personal Information</h1>
+
+<ng-container *ngIf="!isHR">
+<p>Your Avatar:</p><img class="img-fluid" src="{{fileUrl+ avatar}}" alt="avatar" width="128" height="128">
+<app-avatar-upload></app-avatar-upload>
+</ng-container>
+
+<br>
+<app-name-sec [isHR]="isHR" [pid]="pid"></app-name-sec>
+
+<br>
+<app-address-sec [isHR]="isHR" [pid]="pid"></app-address-sec> 
+
+<br>
+<app-contact-sec [isHR]="isHR" [pid]="pid"></app-contact-sec>
+
+<br>
+<app-employment-sec [isHR]="isHR" [pid]="pid"></app-employment-sec>
+
+<br>
+<app-emergency-sec [isHR]="isHR" [pid]="pid"></app-emergency-sec>
+
+<br>
+<app-doc-sec ></app-doc-sec>
+
+<ng-container *ngIf="isHR">
+    <app-file-review [pid]="pid"></app-file-review>
+</ng-container>
+
+<ng-container *ngIf="!isHR">
+    <app-file-download></app-file-download>
+</ng-container>
+
+<div *ngIf="!isHR && applicationStatus?.status=='Rejected'">
+    <p>You need to submit for HR to review again</p>
+    <button class="btn btn-primary" (click)="onSubmit_ChangeToPending();goToHome()">Submit</button>
+</div>
+

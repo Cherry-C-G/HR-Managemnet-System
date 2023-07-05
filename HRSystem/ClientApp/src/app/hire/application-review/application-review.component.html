@@ -1,0 +1,20 @@
+<h2>Application Details</h2>
+
+<app-person-info [pid]="pid"></app-person-info>
+
+<form *ngIf="application?.status == 'Pending'" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="editForm" (ngSubmit)="onSubmit()"> -->
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status" class="form-control">
+          <option value="Rejected">Reject</option>
+          <option value="Completed">Approve</option>
+        </select>
+    </div>
+      <div class="form-group">
+        <label for="comments">Comments</label>
+        <textarea id="comments" formControlName="comments" class="form-control" rows="3"></textarea>
+      </div>
+
+    <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Submit</button>
+</form>

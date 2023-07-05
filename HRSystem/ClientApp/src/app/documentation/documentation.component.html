@@ -1,0 +1,22 @@
+<ng-container *ngIf="!reviewFile else review">
+    <div class="card" *ngFor="let file of requiredfiles | async as list">
+        <div class="row align-items-center">
+            <div class="col-2 d-flex">
+                <label class="mr-2">{{ file.title }}:</label>
+            </div>
+            <div class="col-3">
+                <app-document-preview [documentUrl]="fileUrl + file.path"></app-document-preview>
+            </div>
+            <div class="col-6 text-right">
+                <app-file-upload [title]="file.title"></app-file-upload>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">Submit</button>
+</ng-container>
+
+<ng-template #review>
+    <p>Review your uploaded document, and submit after confirmation.</p>
+    <app-file-download></app-file-download>
+    <button class="btn btn-primary" type="submit" (click)="onApplicationSubmit()">Submit Application</button>
+</ng-template>

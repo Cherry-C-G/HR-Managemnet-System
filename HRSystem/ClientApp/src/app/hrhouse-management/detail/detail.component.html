@@ -1,0 +1,80 @@
+<h1>Details for House {{ HouseID }}</h1>
+<br />
+<br />
+<h1> Facility Details</h1>
+<p *ngIf="!facilities"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="facilities">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let facility of facilities">
+            <td>{{ facility.type }}</td>
+            <td>{{ facility.description}}</td>
+            <td>{{ facility.quantity }}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+<h1> Employees Who Live In This House</h1>
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Car</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.phone}}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.car }}</td>
+            <td>
+                <input type='button' class="btn btn-primary" value='Detail' 
+                  [routerLink]="['/HR/Hire/Review', employee.personID, 0]" />
+            </td>
+            <!-- <td><a type="submit" class="btn btn-primary" (click)="openProfile()">View Employee Profile</a></td> -->
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<h1>Facility Report History for House {{ HouseID }}</h1>
+
+<p *ngIf="!reports"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="reports">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>ReportDate</th>
+            <th>Status</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let report of reports">
+
+            <td>{{ report.title }}</td>
+            <td>{{ report.description}}</td>
+            <td>{{ report.reportDate }}</td>
+            <td>{{ report.status }}</td>
+            <!--pop-up comment window (1. connect to comment component, 2 pass reportId to comment component-->
+            <td><a type="submit" class="btn btn-primary" (click)="openDetails(report.id)">View Comments</a></td>
+        </tr>
+    </tbody>
+</table>

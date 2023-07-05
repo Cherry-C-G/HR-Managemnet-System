@@ -1,0 +1,73 @@
+<h2>Address</h2>
+
+<ng-container *ngIf="!editMode">
+    <div *ngFor="let item of addressSec?.addresses">
+        <ul>
+            <h4 *ngIf="item.isSecondary">
+                <b>Secondary Address</b>
+            </h4>
+            <h4 *ngIf="!item.isSecondary">
+                <b>Primary Address</b>
+            </h4>
+            <li>Address Line 1: {{item.addressLine1}}</li>
+            <li>Address Line 2: {{item.addressLine2}}</li>
+            <li>City: {{item.city}}</li>
+            <li>Zipcode: {{item.zipcode}}</li>
+            <li>State Name: {{item.stateName}}</li>
+        </ul>
+    </div>
+    <ng-container *ngIf="!isHR">
+      <button [disabled]="isHR" class="btn btn-primary" (click)="toggleEdit(); populateForm()">Edit</button>
+    </ng-container>
+</ng-container>
+
+
+<form *ngIf="editMode" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="addressArray">
+      <div *ngFor="let address of addressFormGetter.controls; let i=index">
+            <h4 *ngIf="i == 1">
+                <b>Secondary Address</b>
+            </h4>
+            <h4 *ngIf="i == 0">
+                <b>Primary Address</b>
+            </h4>
+        <div [formGroupName]="i">
+          <div class="form-group">
+            <label for="addressLine1">Address Line 1:</label>
+            <input type="text" class="form-control" id="addressLine1" formControlName="addressLine1">
+          </div>
+          <div class="form-group">
+            <label for="addressLine2">Address Line 2:</label>
+            <input type="text" class="form-control" id="addressLine2" formControlName="addressLine2">
+          </div>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" id="city" formControlName="city">
+          </div>
+          <div class="form-group">
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" class="form-control" id="zipcode" formControlName="zipcode">
+          </div>
+          <div class="form-group">
+            <label for="stateName">State Name:</label>
+            <input type="text" class="form-control" id="stateName" formControlName="stateName">
+          </div>
+          <div class="form-group">
+            <label for="stateAbbr">State Abbreviation:</label>
+            <input type="text" class="form-control" id="stateAbbr" formControlName="stateAbbr">
+          </div>
+          <!-- <div class="form-group">
+            <label for="isSecondary">Is Secondary:</label>
+
+            <input type="checkbox" class="form-control" id="isSecondary" formControlName="isSecondary">
+          </div> -->
+        </div>
+    <br>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Save</button>
+    <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+
+</form>
+

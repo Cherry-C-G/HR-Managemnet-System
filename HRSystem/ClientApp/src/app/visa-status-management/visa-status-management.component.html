@@ -1,0 +1,52 @@
+<ng-container [ngSwitch]="visaStatus">
+    <div *ngSwitchCase="visaStatusEnum.OPT_EAD">
+        <p>Your visa status is OPT EAD expire at{{visaEndDate}}.</p>
+        <ng-container *ngIf="expire">
+            <p>Please download and fill your I-983 form</p>
+            <app-document-template [template]="visaStatusEnum.I_983.toString()" [fileExtension]="'.pdf'"
+                [isVisaDocument]="true" [nextVisaStatus]="visaStatusEnum.I_983"></app-document-template>
+        </ng-container>
+    </div>
+    <div *ngSwitchCase="visaStatusEnum.I_983">
+        <p>Your visa status is I-983.</p>
+        <p>Waiting for HR to approve and sign I-983</p>
+    </div>
+    <div *ngSwitchCase="visaStatusEnum.I_983_Signed">
+        <p>Please send the I-983 with all necessary documents to your school and upload the new
+            I-20</p>
+            <app-file-upload [title]="visaStatusEnum.I_20" [isVisaDocument]="true"
+            [nextVisaStatus]="visaStatusEnum.I_20"></app-file-upload>
+    </div>
+    <div *ngSwitchCase="visaStatusEnum.I_20">
+        <p>Your visa status is I-20.</p>
+        <p>Please upload your OPT Receipt</p>
+        <app-file-upload [title]="visaStatusEnum.OPT_Receipt" [isVisaDocument]="true"
+            [nextVisaStatus]="visaStatusEnum.OPT_Receipt"></app-file-upload>
+        <p>Or Please upload your OPT STEM Receipt</p>
+        <app-file-upload [title]="visaStatusEnum.OPT_STEM_Receipt" [isVisaDocument]="true"
+            [nextVisaStatus]="visaStatusEnum.OPT_STEM_Receipt"></app-file-upload>
+    </div>
+    <div *ngSwitchCase="visaStatusEnum.OPT_Receipt">
+        <p>Your visa status is OPT Receipt.</p>
+        <p>Please upload your OPT EAD</p>
+        <app-file-upload [title]="visaStatusEnum.OPT_EAD.toString()" [isVisaDocument]="true"
+            [nextVisaStatus]="visaStatusEnum.OPT_EAD"></app-file-upload>
+    </div>
+    <div *ngSwitchCase="visaStatusEnum.OPT_STEM_Receipt">
+        <p>Your visa status is OPT STEM Receipt.</p>
+        <p>Please upload your OPT STEM EAD</p>
+        <app-file-upload [title]="visaStatusEnum.OPT_STEM_EAD.toString()" [isVisaDocument]="true"
+            [nextVisaStatus]="visaStatusEnum.OPT_STEM_EAD"></app-file-upload>
+    </div>
+    <div *ngSwitchCase="visaStatusEnum.OPT_STEM_EAD">
+        <p>Your visa status is OPT STEM EAD expire at{{visaEndDate}}.</p>
+        <ng-container *ngIf="expire">
+            <p>Please download and fill your I-983 form</p>
+            <app-document-template [template]="visaStatusEnum.I_983.toString()" [fileExtension]="'.pdf'"
+                [isVisaDocument]="true" [nextVisaStatus]="visaStatusEnum.I_983"></app-document-template>
+        </ng-container>
+    </div>
+    <div *ngSwitchDefault>
+        <p>Your visa status is unknown.</p>
+    </div>
+</ng-container>

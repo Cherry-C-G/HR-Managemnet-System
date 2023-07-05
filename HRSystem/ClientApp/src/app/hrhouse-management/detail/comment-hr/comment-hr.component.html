@@ -1,0 +1,59 @@
+<h1>Comments for Report ID {{ reportId }}</h1>
+<p *ngIf="!comments"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="comments">
+    <thead>
+        <tr>
+            <th>Comments</th>
+            <th>Create Date</th>
+            <th>Last Modification Date</th>
+            <th>Update Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comment of comments">
+            <td>{{ comment.comments }}</td>
+            <td>{{ comment.createdDate}}</td>
+            <td>{{ comment.lastModificationDate }}</td>
+            <td>
+                <div class="form-group">
+                    <form [formGroup]="editForm">
+
+                        <input id="comment" class="form-control" type="text" formControlName="comment">
+
+                        <button type="submit" class="btn btn-primary" (click)="onUpdate(comment.id)">Send</button>
+                    </form>
+                </div>
+
+            </td>
+            <!--<td><button class="btn btn-primary" (click)="toggleEdit(); populateForm()">Edit</button></td>
+            <div>
+                <form *ngIf="editMode" [formGroup]="editForm" (ngSubmit)="onUpdate(comment.id)">
+                    <div class="form-group">
+                        <label for="comment">Edit Comment</label>
+                        <input type="comment" formControlName="comment" id="comment" class="form-control">
+                    </div>
+                    <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Save</button>
+                    <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+                </form>
+
+
+            </div>-->
+        </tr>
+    </tbody>
+</table>
+
+
+
+<h1>Add Comment</h1>
+<div class="form-group">
+    <form [formGroup]="reportForm">
+
+        <label for="comment">Comment</label>
+        <input id="comment" class="form-control" type="text" formControlName="comment">
+
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add Comment</button>
+    </form>
+</div>
+
+

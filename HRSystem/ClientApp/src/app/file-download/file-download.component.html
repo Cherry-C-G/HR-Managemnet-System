@@ -1,0 +1,35 @@
+<div class="card" *ngFor="let file of files | async as list">
+    <div class="row align-items-center">
+      <div class="col-1">
+        <fa-icon [icon]="['far', 'file']" class="text-secondary"></fa-icon>
+      </div>
+      <div class="col-1">
+        <label class="font-weight-bold">{{ file.title }}:</label>
+      </div>
+      <div class="col-1 text-right">
+        <a [href]="fileUrl + file.path" download>
+          <button class="btn btn-primary">Download</button>
+        </a>
+      </div>
+      <div class="col-2">
+        <app-document-preview [documentUrl]="fileUrl + file.path"></app-document-preview>
+      </div>     
+      <div class="col-6 text-right">
+        <app-file-upload [title]="file.title" (fileUploaded)="refreshFiles()"></app-file-upload>
+      </div>
+      <div class="col-1 text-right">
+        <button class="btn btn-danger" (click)="deleteFile(file.title)">Delete</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group col-3">
+    <label for="newfiletitle">Upload new File:</label>
+    <input type="text" class="form-control" [(ngModel)]="newfiletitle" id="newfiletitle" placeholder="Please input file name">
+  </div>
+  <button class="btn btn-primary" (click)="generateFileUpload()">Generate File Upload</button>
+  
+  <ng-container *ngIf="showFileUpload">
+    <app-file-upload [title]="newfiletitle" (fileUploaded)="refreshFiles()"></app-file-upload>
+  </ng-container>
+  

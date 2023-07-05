@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSystem", "HRSystem\HRSystem.csproj", "{1CACEE2B-5D5E-42E2-B885-05003258F88A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "AuthService\AuthService.csproj", "{8303A5DC-06A0-4D18-A72D-F07459B5AFEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CACEE2B-5D5E-42E2-B885-05003258F88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CACEE2B-5D5E-42E2-B885-05003258F88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CACEE2B-5D5E-42E2-B885-05003258F88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CACEE2B-5D5E-42E2-B885-05003258F88A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8303A5DC-06A0-4D18-A72D-F07459B5AFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8303A5DC-06A0-4D18-A72D-F07459B5AFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8303A5DC-06A0-4D18-A72D-F07459B5AFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8303A5DC-06A0-4D18-A72D-F07459B5AFEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A28FE33-0A63-47D4-B7B7-956C1DB7B899}
+	EndGlobalSection
+EndGlobal

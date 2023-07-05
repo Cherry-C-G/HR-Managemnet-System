@@ -1,0 +1,60 @@
+<h2>Name</h2>
+
+<div *ngIf="!editMode && nameSec?.person">
+<ul>
+    <li>First Name: {{nameSec.person.firstname}}</li>
+    <li>Last Name: {{nameSec.person.lastname}}</li>
+    <li>Middle Name: {{nameSec.person.middlename}}</li>
+    <li>Preferred Name: {{nameSec.person.preferredName}}</li>
+    <li>Gender: {{nameSec.person.gender}}</li>
+    <li>Date Of Birth: {{nameSec.person.dob}}</li>
+    <li>SSN: ****-**-{{ssn_last4}}</li>
+</ul>
+<ng-container *ngIf="!isHR">
+  <button [disabled]="isHR" class="btn btn-primary" (click)="toggleEdit(); populateForm()">Edit</button>
+</ng-container>
+</div>
+
+
+<form *ngIf="editMode" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input type="text" formControlName="firstname" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input type="text" formControlName="lastname" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="middlename">Middle Name</label>
+      <input type="text" formControlName="middlename" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="preferredName">Preferred Name</label>
+      <input type="text" formControlName="preferredName" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth</label>
+      <input type="date" formControlName="dob" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" formControlName="gender">
+        <option value="">I don't want to answer</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <!-- <input type="text" formControlName="gender" class="form-control"> -->
+    </div>
+    
+    <div class="form-group">
+      <label for="ssn">SSN</label>
+      <input type="text" formControlName="ssn" class="form-control">
+    </div>
+    
+    <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Save</button>
+    <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+
+</form>
+  
+  

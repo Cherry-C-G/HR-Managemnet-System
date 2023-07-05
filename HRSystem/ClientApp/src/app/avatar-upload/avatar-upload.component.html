@@ -1,0 +1,8 @@
+<div class="form-control">
+    <label class="mr-3" style="margin-right: 10px;">Upload Your Avatar</label>
+    <input type="file" (change)="onFileChange($event)">
+    <button class="btn btn-primary" (click)="onClick()">Upload</button>
+    <ng-container *ngIf="uploaded">
+        <img class="img-fluid" src="{{fileUrl+ selectedFile.name}}" alt="avatar" width="128" height="128">
+    </ng-container>
+</div>

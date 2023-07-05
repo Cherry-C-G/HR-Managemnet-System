@@ -1,0 +1,45 @@
+<h1 id="tableLabel">House List</h1>
+
+<p *ngIf="!hrhouses"><em>Loading...</em></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>House Address</th>
+            <th>Landlord</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Number of Employees</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let house of hrhouses">
+            <td>{{ house.houseAddress }}</td>
+            <td>{{ house.landlord }}</td>
+            <td>{{ house.phone }}</td>
+            <td>{{ house.email }}</td>
+            <td>{{ house.numberOfEmployee }}</td>
+            <td><button type="submit" class="btn btn-primary" (click)="deleteItem(house.houseID)">Delete</button></td>
+            <td><a type="submit" class="btn btn-primary" (click)="openDetails(house.houseID)">View Details</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<h1>Add New House</h1>
+<div class="form-group">
+    <form [formGroup]="reportForm">
+
+        <label for="contactId">Contact ID</label>
+        <input id="contactId" class="form-control" type="text" formControlName="contactId">
+
+        <label for="address">Address</label>
+        <input id="address" class="form-control" type="text" formControlName="address">
+
+        <label for="numberOfPerson">Number of Person</label>
+        <input id="numberOfPerson" class="form-control" type="text" formControlName="numberOfPerson">
+
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add House</button>
+    </form>
+</div>
+

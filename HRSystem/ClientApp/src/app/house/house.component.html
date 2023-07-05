@@ -1,0 +1,73 @@
+<h1 id="tableLabel">House List</h1>
+
+<br />
+<h1>House Details</h1>
+<p>Please find the your house address and roommates in the list below</p>
+
+<p *ngIf="!houses"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="houses">
+    <thead>
+        <tr>
+            <th>HouseAddress</th>
+            <th>EmployeeName</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let house of houses">
+            <td>{{ house.houseAddress }}</td>
+            <td>{{ house.preferredName}}</td>
+            <td>{{ house.phone }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<br />
+<br />
+<h1>Report Facility Issue</h1>
+<p>If you have a facility problem in your house, please create a report here.</p>
+<div class="form-group">
+    <form [formGroup]="reportForm">
+
+        <label for="title">Title</label>
+        <input id="title" class="form-control" type="text" formControlName="title">
+
+        <label for="description">Description</label>
+        <input id="description" class="form-control" type="text" formControlName="description">
+
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Create Facility Report</button>
+    </form>
+</div>
+
+<br />
+<br />
+<h1>Report history</h1>
+<p>Please find the your facility reports in the list below</p>
+
+<p *ngIf="!reports"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="reports">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>ReportDate</th>
+            <th>Status</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let report of reports">
+            
+            <td>{{ report.title }}</td>
+            <td>{{ report.description}}</td>
+            <td>{{ report.reportDate }}</td>
+            <td>{{ report.status }}</td>
+            <!--pop-up comment window (1. connect to comment component, 2 pass reportId to comment component-->
+            <td><a type="submit" class="btn btn-primary" (click)="openDetails(report.id)">View Comments</a></td>
+        </tr>
+    </tbody>
+</table>
+

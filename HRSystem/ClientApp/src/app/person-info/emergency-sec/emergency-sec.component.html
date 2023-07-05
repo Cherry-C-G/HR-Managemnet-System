@@ -1,0 +1,89 @@
+<h2>Emergency Contacts</h2>
+
+<ng-container *ngIf="!editMode && emergencySec?.emergencyContacts">
+    <div *ngFor="let item of emergencySec?.emergencyContacts; let i = index">
+        <ul>
+            <h4><b>Emergency Contact {{i+1}}</b></h4>
+            
+            <li>First Name: {{item.person.firstname}}</li>
+            <li>Last Name: {{item.person.lastname}}</li>
+            <li>Middle Name: {{item.person.middlename}}</li>
+            <li>Preferred Name: {{item.person.preferredName}}</li>
+            
+            <li>Address Line 1: {{item.address.addressLine1}}</li>
+            <li>Address Line 2: {{item.address.addressLine2}}</li>
+            <li>City: {{item.address.city}}</li>
+            <li>Zipcode: {{item.address.zipcode}}</li>
+            <li>State Name: {{item.address.stateName}}</li>
+        </ul>
+    </div>
+    <ng-container *ngIf="!isHR">
+      <button [disabled]="isHR" class="btn btn-primary" (click)="toggleEdit(); populateForm()">Edit</button>
+    </ng-container>
+  </ng-container>
+
+
+<form *ngIf="editMode" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="personArray">
+      <div *ngFor="let person of personFormGetter.controls; let i=index">
+        <h3><b>Emergency Contact Name {{i+1}}</b></h3>
+        <div [formGroupName]="i">
+          <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" formControlName="firstname" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" formControlName="lastname" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Middle Name:</label>
+            <input type="text" formControlName="middlename" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Preferred Name:</label>
+            <input type="text" formControlName="preferredName" class="form-control">
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  
+    <div formArrayName="addressArray">
+      <div *ngFor="let address of addressFormGetter.controls; let i=index">
+        <h3><b>Emergency Contact Address {{i+1}}</b></h3>
+        <div [formGroupName]="i">
+          <div>
+            <label>Address Line 1:</label>
+            <input type="text" formControlName="addressLine1" class="form-control">
+          </div>
+          <div>
+            <label>Address Line 2:</label>
+            <input type="text" formControlName="addressLine2" class="form-control">
+          </div>
+          <div>
+            <label>City:</label>
+            <input type="text" formControlName="city" class="form-control">
+          </div>
+          <div>
+            <label>Zipcode:</label>
+            <input type="text" formControlName="zipcode" class="form-control">
+          </div>
+          <div>
+            <label>State Name:</label>
+            <input type="text" formControlName="stateName" class="form-control">
+          </div>
+          <div>
+            <label>State Abbr:</label>
+            <input type="text" formControlName="stateAbbr" class="form-control">
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  
+    <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Save</button>
+    <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+  </form>
+  
+

@@ -1,0 +1,230 @@
+<h1>Application Form</h1>
+<div class="form-group"> 
+    <form [formGroup]="applicationForm">
+    <label for="firstName">First Name</label>
+    <input id="firstName" class="form-control" type="text" formControlName="firstName" placeholder="Please enter your first name">
+    <div class="form-group">
+      <label for="middleName">Middle Name</label>
+      <input type="text" class="form-control" formControlName="middleName" id="middleName" placeholder="Please enter your middle Name">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Please enter your last name">
+    </div>
+    <div class="form-group">
+      <label for="preferredName">Preferred Name</label>
+      <input type="text" class="form-control" formControlName="preferredName" id="preferredName" placeholder="Please enter your preferred Name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" formControlName="email" id="email" readonly="readonly">
+    </div>
+    <div class="form-group">
+      <label for="avatar">Avatar</label>
+      <app-avatar-upload (avatarPathEmitter)="onAvatarPathEmitted($event)"></app-avatar-upload>
+    </div>
+    <div class="form-group">
+      <label for="cellPhone">Cell Phone</label>
+      <input type="text" class="form-control" formControlName="cellPhone" id="cellPhone" placeholder="Please enter your cell Phone number">
+    </div>
+    <div class="form-group">
+      <label for="alternatePhone">alternate Phone</label>
+      <input type="text" class="form-control" formControlName="alternatePhone" id="alternatePhone" placeholder="Please enter your alternate Phone number">
+    </div>
+    <div class="form-group">
+      <label for="gender">gender</label>
+      <select class="form-control" formControlName="gender" id="gender">
+        <option value="">I don't want to answer</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="ssn">ssn</label>
+      <input type="text" class="form-control" formControlName="ssn" id="ssn" placeholder="Please enter your ssn">
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth</label>
+      <input type="date" class="form-control" formControlName="dob" id="dob" placeholder="Please enter your date of birth">
+    </div>
+
+
+    <div [formGroup]="address">
+      <div class="form-group">
+        <label for="addressLine1">Address Line 1</label>
+        <input type="text" class="form-control" formControlName="addressLine1" id="addressLine1" placeholder="Please enter your address line 1">
+      </div>
+      <div class="form-group">
+        <label for="addressLine2">Address Line 2</label>
+        <input type="text" class="form-control" formControlName="addressLine2" id="addressLine2" placeholder="Please enter your address line 2">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" formControlName="city" id="city" placeholder="Please enter your city">
+      </div>
+      <div class="form-group">
+        <label for="zipCode">ZipCode</label>
+        <input type="text" class="form-control" formControlName="zipCode" id="zipCode" placeholder="Please enter your zipCode">
+      </div>
+      <div class="form-group">
+        <label for="stateName">State Name</label>
+        <input type="text" class="form-control" formControlName="stateName" id="stateName" placeholder="Please enter your state name">
+      </div>
+      <div class="form-group">
+        <label for="stateAbbr">State Abbreviation</label>
+        <input type="text" class="form-control" formControlName="stateAbbr" id="stateAbbr" placeholder="Please enter your State Abbreviation">
+      </div>
+    </div>
+
+
+    <div [formGroup]="employee">
+      <!-- <div class="form-group">
+        <label for="houseId">House Id</label>
+        <input type="number" class="form-control" formControlName="houseId" id="houseId" placeholder="Please enter your house ID">
+      </div> -->
+      <div class="form-group">
+        <label for="car">car</label>
+        <input type="text" class="form-control" formControlName="car" id="car" placeholder="Please enter your car with brand_type_color">
+      </div>
+      <!-- <div class="form-group">
+        <label for="startDate">startDate</label>
+        <input type="date" class="form-control" formControlName="startDate" id="startDate" placeholder="Please enter your startDate">
+      </div>
+      <div class="form-group">
+        <label for="endDate">endDate</label>
+        <input type="date" class="form-control" formControlName="endDate" id="endDate" placeholder="Please enter your endDate">
+      </div> -->
+      <div class="form-group">
+        <label for="visaStartDate">visaStartDate</label>
+        <input type="date" class="form-control" formControlName="visaStartDate" id="visaStartDate" placeholder="Please enter your visaStartDate">
+      </div>
+      <div class="form-group">
+        <label for="visaEndDate">visaEndDate</label>
+        <input type="date" class="form-control" formControlName="visaEndDate" id="visaEndDate" placeholder="Please enter your visaEndDate">
+      </div>
+                <div [formGroup]="visaStatus">
+                  <div class="form-group">
+                    <label for="isUSResident">Are you a citizen or permanent resident of the U.S?</label>
+                    <input type="checkbox" formControlName="isUSResident" id="isUSResident">
+                  </div>
+                  <div *ngIf="applicationForm.get('employee')?.get('visaStatus')?.get('isUSResident')?.value === true" class="form-group">
+                    <label for="usResidenceType">If yes, choose either “Green Card” or “Citizen”</label>
+                    <select class="form-control" formControlName="usResidenceType" id="usResidenceType">
+                      <option value="Green Card">Green Card</option>
+                      <option value="Citizen">Citizen</option>
+                    </select>
+                  </div>
+                  <div *ngIf="applicationForm.get('employee')?.get('visaStatus')?.get('isUSResident')?.value == false" class="form-group">
+                    <label for="visaType">What is your work authorization?</label>
+                    <select class="form-control" formControlName="visaType" id="visaType">
+                      <option value="H1-B">H1-B</option>
+                      <option value="L2">L2</option>
+                      <option value="F1(CPT/OPT)">F1(CPT/OPT)</option>
+                      <option value="H4">H4</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div *ngIf="applicationForm.get('employee')?.get('visaStatus')?.get('visaType')?.value === 'Other'" class="form-group">
+                    <label for="otherVisaType">Please specify the work authorization:</label>
+                    <input type="text" class="form-control" formControlName="otherVisaType" id="otherVisaType">
+                  </div>
+                  <!-- <div class="form-group">
+                    <label for="active">Active</label>
+                    <input type="checkbox" class="" formControlName="active" id="active">
+                  </div> -->
+                  <!-- <div class="form-group">
+                    <label for="modificationDate">modificationDate</label>
+                    <input type="date" class="form-control" formControlName="modificationDate" id="modificationDate" placeholder="Please enter your modificationDate" value= Date.now()>
+                  </div> -->
+                  <!-- <div class="form-group">
+                    <label for="createUser">Create User</label>
+                    <input type="number" class="form-control" formControlName="createUser" id="createUser" placeholder="Please enter createUser ID ">
+                  </div> -->
+                </div>
+                <div class="form-group">
+                  <label for="hasDriverLicense">Do you have a driver license?</label>
+                  <input type="checkbox" formControlName="hasDriverLicense" id="hasDriverLicense">
+                </div>
+                
+                <div *ngIf="applicationForm.get('employee')?.get('hasDriverLicense')?.value">
+                  <!-- <app-file-upload [title]="'Driver License'"></app-file-upload> -->
+                  <div class="form-group">
+                    <label for="driverLisence">Driver License</label>
+                    <input type="text" class="form-control" formControlName="driverLisence" id="driverLisence" placeholder="Please enter your driver license">
+                  </div>
+                  <div class="form-group">
+                    <label for="driverLisence_ExpirationDate">Driver License Expiration Date</label>
+                    <input type="date" class="form-control" formControlName="driverLisence_ExpirationDate" id="driverLisence_ExpirationDate" placeholder="Please enter your driver license expiration date">
+                  </div>
+                </div>                
+    </div>
+
+
+    <h4>Add Contacts:</h4>
+      <div class="add-contacts-form" [formGroup]="applicationForm">
+        <ng-container formArrayName="contacts">
+          <ng-container *ngFor="let contactForm of contacts.controls; let i = index">
+            <div class="contact-form-row" [formGroupName]="i">
+              <mat-form-field appearance="fill">
+                  <input matInput
+                        formControlName="relationship"
+                        placeholder="relationship">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                  <mat-select formControlName="isReferrence"
+                              placeholder="Reference Contact?">
+                      <mat-option [value]="true">Yes</mat-option>
+                      <mat-option [value]="false">No</mat-option>
+                  </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-select formControlName="isEmergencey"
+                            placeholder="Emergency Contact?">
+                    <mat-option [value]="true">Yes</mat-option>
+                    <mat-option [value]="false">No</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-select formControlName="isLandLord"
+                          placeholder="Landlord?">
+                  <mat-option [value]="true">Yes</mat-option>
+                  <mat-option [value]="false">No</mat-option>
+              </mat-select>
+          </mat-form-field>
+          
+        <div formGroupName = contactor>
+                <mat-form-field appearance="fill">           
+                <input matInput
+                    formControlName="contactorFirstName"
+                    placeholder="contactorFirstName">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                <input matInput
+                    formControlName="contactorLastName"
+                    placeholder="contactorLastName">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input matInput
+                    formControlName="contactorEmail"
+                    placeholder="contactorEmail">            
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input matInput
+                    formControlName="contactorCellPhone"
+                    placeholder="contactorCellPhone">
+              </mat-form-field>
+
+              <mat-icon class="delete-btn" (click)="deleteContact(i)">
+                  delete_forever</mat-icon>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+          <button mat-mini-fab (click)="addContact()">
+            <mat-icon class="add-course-btn">add</mat-icon>
+          </button>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+</form>
+</div>

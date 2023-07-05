@@ -1,0 +1,39 @@
+<h1>Hello, {{name}}</h1>
+<!-- <p>Status: {{status}}</p> -->
+<!-- <app-file-upload [title]="'Driver License'"></app-file-upload>
+<app-file-download></app-file-download>
+
+<app-file-review></app-file-review>
+
+<app-avatar-upload (avatarPathEmitter)="onAvatarPathEmitted($event)"></app-avatar-upload> -->
+<img class="img-fluid" src="{{fileUrl+ avatar}}" alt="avatar" width="128" height="128">
+<p>Welcome to BeaconFire Solution</p>
+<ng-container *ngIf="status=='Pending'">
+    <p>Waiting for HR review, please check back later.</p>
+</ng-container>
+
+<ng-container *ngIf="status=='Rejected'">
+    <p>Application Rejected, please check comment and submit again after fix the issue.</p>
+    <button class="btn btn-primary" [routerLink]="['/PersonalInformation']">View Your Information</button>
+</ng-container>
+
+<ng-container *ngIf="status!='Approved'">
+    <ng-container *ngIf="comment && comment.trim().length > 0">
+        <div class="comment-header">HR Comments:</div>
+        <div class="comment" style="color: red;">
+            {{ comment }}
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="documentComment && documentComment.length > 0">
+
+        <div class="document-comments">
+          <div *ngFor="let documentCommentItem of documentComment">
+            <ng-container *ngIf="documentCommentItem.comment && documentCommentItem.comment.trim().length > 0">
+                <div class="comment-title">Document Name: {{ documentCommentItem.title }}</div>
+                <div class="comment-text" style="color: red;">Comments: {{ documentCommentItem.comment }}</div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+</ng-container>

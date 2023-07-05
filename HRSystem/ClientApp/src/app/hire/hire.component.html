@@ -1,0 +1,45 @@
+<p>
+    Please enter the email to generate token
+</p>
+
+<div class="form-group"> 
+    <h2>Generate Token</h2>
+    <form [formGroup]="tokenGenerateForm">
+    <label for="email">email</label>
+    <input id="email" class="form-control" type="text" formControlName="email" placeholder="Please input email">
+
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+</form>
+</div>
+
+<br>
+
+<div>
+    <h2>Application Reivew</h2>
+    <table class='table table-striped' aria-labelledby="tableLabel">
+        <thead>
+          <tr>
+            <th>Application Type</th>
+            <th>Create Date</th>
+            <th>Status</th>
+            <th>Comments</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of allApplication">
+            <td>{{ item.type }}</td>
+            <td>{{ item.createdDate }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.comments }}</td>
+            <!-- <td>{{ item.employeeId }}</td>
+            <td>{{ item.employee.personId }}</td> -->
+            <td>
+                <input type='button' class="btn btn-primary" value='Detail' 
+                  [routerLink]="['/HR/Hire/Review', item.employee.personId, item.id]" />
+            </td>
+              
+          </tr>
+        </tbody>
+      </table>
+</div>

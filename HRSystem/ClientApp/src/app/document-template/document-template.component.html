@@ -1,0 +1,14 @@
+<div class="row align-items-center">
+    <div class="col-2">
+        <label class="font-weight-bold">{{ template }} Template:</label>
+      </div>
+      <div class="col-1 mr-auto">
+        <a [href]="fileUrl + template + fileExtension" download target="_blank">
+          <button class="btn btn-primary">Download</button>
+        </a>
+      </div>   
+      <div class="col-1"></div>
+      <div class="col-6 text-right">
+        <app-file-upload [title]="template" [isVisaDocument]="isVisaDocument" [nextVisaStatus]="nextVisaStatus"></app-file-upload>
+      </div>
+</div>

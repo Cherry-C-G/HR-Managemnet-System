@@ -1,0 +1,45 @@
+<br>
+
+<h2>Contact Info</h2>
+<div *ngIf="!editMode && contactSec">
+    <ul>
+        <li *ngIf="contactSec">Personal Email: {{contactSec.email}}</li>
+        <li *ngIf="contactSec">Work Email: {{contactSec.workEmail}}</li>
+        <li *ngIf="contactSec">Cell Phone: {{contactSec.cellPhone}}</li>
+        <li *ngIf="contactSec">Work Phone: {{contactSec.alternatePhone}}</li>
+    </ul>
+
+    <ng-container *ngIf="!isHR">
+      <button [disabled]="isHR" class="btn btn-primary" (click)="toggleEdit(); populateForm()">Edit</button>
+    </ng-container>
+  </div>
+
+<form *ngIf="editMode" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" formControlName="email" id="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="workEmail">Work Email:</label>
+      <input type="email" formControlName="workEmail" id="workEmail" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="cellPhone">Cell Phone:</label>
+      <input type="text" formControlName="cellPhone" id="cellPhone" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="alternatePhone">Alternate Phone:</label>
+      <input type="text" formControlName="alternatePhone" id="alternatePhone" class="form-control">
+    </div>
+
+    <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Save</button>
+    <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+    
+    
+    <!-- <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Submit</button> -->
+  
+</form>
+  
+  
+  
+
